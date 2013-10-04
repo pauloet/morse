@@ -2,3 +2,29 @@ Author: Paulo Lopes Simões
 Email: psimoes@laas.fr
 Title: "Simulation and management of all communications in a multi-robot system"
 Date: 04/10/2013
+======================================================================================================
+After several attemps to install MORSE in my machine, I resume here bellow my successful installation:
+
+*	Fork in Github the Morse project
+*	Type: git clone https://github.com/usergithub/morse.git
+*	Install Python 3.2.2 -> http://www.python.org/download/releases/3.2.2/
+*	Download Blender 2.62 (we don't need to install it, only to use its executable) -> http://download.blender.org/release/
+*	Install Morse v1.1
+
+Notes during Morse installation:
+*	Compiling with the command: cmake -DPYTHON_EXECUTABLE=/usr/local/bin/python3.2 ..
+*	After install it, change the file bashrc:
+		>> cd
+		>> gedit .bashrc
+	And add at the end of the document something like this:
+		export MORSE_BLENDER=/home/user/Desktop/blender-2.62-linux-glibc27-i686/blender
+
+
+
+Machine Properties:
+* Ubuntu 12.04 LTS
+* Memory: 3.0 GB
+* Processor: Intel® Core™2 Duo CPU P8600 @ 2.40GHz × 2 
+* OS type: 32.bit
+* Graphics: NVIDIA GeForce 9600M GS 1GB
+
