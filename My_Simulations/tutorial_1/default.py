@@ -1,56 +1,30 @@
 #! /usr/bin/env morseexec
-
-""" Basic MORSE simulation scene for <tutorial_1> environment
-
-Feel free to edit this template as you like!
-"""
-
 from morse.builder import *
+import logging
 
-# Add the MORSE mascott, MORSY.
-# Out-the-box available robots are listed here:
-# http://www.openrobots.org/morse/doc/stable/components_library.html
-#
-# 'morse add robot <name> tutorial_1' can help you to build custom robots.
-robot = Morsy()
 
-# The list of the main methods to manipulate your components
-# is here: http://www.openrobots.org/morse/doc/stable/user/builder_overview.html
-robot.translate(1.0, 0.0, 0.0)
 
-# Add a motion controller
-# Check here the other available actuators:
-# http://www.openrobots.org/morse/doc/stable/components_library.html#actuators
-#
-# 'morse add actuator <name> tutorial_1' can help you with the creation of a custom
-# actuator.
+
+# Append ATRV robot to the scene
+robot = ATRV()
+robot.name = "Paulo"
+
+# Append an actuator
 motion = MotionVW()
+motion.translate(x=.2, z=1)
 robot.append(motion)
 
-
-# Add a keyboard controller to move the robot with arrow keys.
-keyboard = Keyboard()
-robot.append(keyboard)
-
-# Add a pose sensor that exports the current location and orientation
-# of the robot in the world frame
-# Check here the other available actuators:
-# http://www.openrobots.org/morse/doc/stable/components_library.html#sensors
-#
-# 'morse add sensor <name> tutorial_1' can help you with the creation of a custom
-# sensor.
+# Append a sensor
 pose = Pose()
+pose.translate(z = 0.75)
 robot.append(pose)
 
-# To ease development and debugging, we add a socket interface to our robot.
-#
-# Check here: http://www.openrobots.org/morse/doc/stable/user/integration.html 
-# the other available interfaces (like ROS, YARP...)
+# Configure the robot on the 'socket' interface
 robot.add_default_interface('socket')
 
+env = Environment('indoors-1/indoor-1')
 
-# set 'fastmode' to True to switch to wireframe mode
-env = Environment('sandbox', fastmode = False)
-env.place_camera([10.0, -10.0, 10.0])
-env.aim_camera([1.05, 0, 0.78])
 
+logger = logging.getLogger("morse." + __name__)
+logger.info("info")
+logger.debug("debug")
