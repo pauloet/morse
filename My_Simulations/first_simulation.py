@@ -11,8 +11,8 @@ r1.append(motion1); r1.append(pose1);     # Appending Actuator and Sensor to 'r1
 # Configuring the middlewares of ALL the robot components: Data-streams & Services
 r1.add_default_interface('socket')
 
-keyboard1 = Keyboard()
-r1.append(keyboard1)
+controller1 = Keyboard()
+r1.append(controller1)
 
 
 """ Building the 2nd Robot 'r2' """
@@ -24,10 +24,6 @@ pose2 = Pose()           # Create a new instance of the sensor
 pose2.translate(z=0.83)  # Place de component at the specific location (x,y,z)
 r2.append(motion2); r2.append(pose2);
 r2.add_default_interface('socket')
-
-#keyboard2 = Keyboard()
-#r2.append(keyboard2)
-# this implies that the same keyboard is applied to both robots
 
 """ Choosing an Environment """
 env = Environment('indoors-1/boxes')
