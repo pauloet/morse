@@ -2,6 +2,7 @@
 # Mark then your script as executable (chmod + file.py), and run as ./file.py
 import logging
 from morse.builder import *
+from math import pi
 logging.basicConfig(filename = "robots_communications.log")#, level = logging.DEBUG)
 logger = logging.getLogger("morse.robots_communications" + __name__)
 
@@ -17,30 +18,28 @@ r1.append(motion1); r1.append(pose1);     # Appending Actuator and Sensor to 'r1
 r1.add_default_interface('socket')
 r1.properties(Object = True, Graspable = False, Label = "Mouse")
 controller1 = Keyboard()
-controller1.properties(Speed = 3.0)
+controller1.properties(Speed = 4.0)
 r1.append(controller1)
 
 
 """ Building the 2nd Robot 'r2' """
-r2 = B21()
-r2.translate(x=-5)       # Start with a jump and away from r1
-motion2 = MotionVW()     # Create a new instance of the actuator
-motion2.translate(z=0.3) # Place the component at the specific location (x,y,z)
+r2 = Quadrotor()
+r2.translate(x=-5, z=1);      r2.rotate(z=pi/3);       
 pose2 = Pose()           # Create a new instance of the sensor
-pose2.translate(z=0.83)  # Place de component at the specific location (x,y,z)
-r2.append(motion2); r2.append(pose2);
-camL = SemanticCamera()
-camL.translate(x=0.2, y=0.3, z=0.9)
-camR = SemanticCamera()
-camR.translate(x=0.2, y=-0.3, z=0.9)
-r2.append(camL); r2.append(camR);
+pose2.translate(z=0.1)  # Place de component at the specific location (x,y,z)
+r2.append(pose2);
+cam = SemanticCamera()
+cam.translate(x=0.3, z=-0.05); cam.rotate(x=0.2); cam.properties(Vertical_Flip=False);
+r2.append(cam);
+waypoint = RotorcraftWaypoint()
+r2.append(waypoint)
 r2.add_default_interface('socket')
 
 """ Choosing an Environment """
 env = Environment('indoors-1/boxes')
 env.place_camera([5, -5, 6])
 env.aim_camera([1.0470, 0, 0.7854])
-env.select_display_camera(camL)
+env.select_display_camera(cam)
 
 
 logger.debug("********** DEBUG MSG **********")

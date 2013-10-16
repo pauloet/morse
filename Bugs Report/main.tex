@@ -1,0 +1,102 @@
+\documentclass[11pt,a4paper]{report}
+
+% PACKAGES
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage[ngerman,english]{babel}
+\usepackage[hmargin=25mm,top=25mm]{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{lmodern}
+\usepackage{indentfirst}	% "tab" begin paragraph
+\usepackage{hyperref} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{multirow}
+\usepackage{color, colortbl}
+\usepackage{todonotes}
+
+\hypersetup{
+  colorlinks,
+  citecolor=violet,
+  linkcolor=Peach,
+  urlcolor=green}
+
+\thispagestyle{empty}
+\input{sources/settings}
+
+\begin{document}
+\selectlanguage{english}
+
+% TITLEPAGE
+%=============================================================================================
+\begin{figure}[t]
+	\includegraphics[height=12.9mm]{graphics/logos/laas.jpeg}
+	\hfill
+	\includegraphics[height=20.9mm]{graphics/logos/morse.png}
+\end{figure}
+
+\vspace*{3\baselineskip}
+
+\begin{center}
+	
+	\huge{\textbf{List of possible bugs detected in Morse Simulator}}\\[3\baselineskip]
+	
+\end{center}
+
+\begin{raggedleft}
+	{\Large
+		\textbf{Simulation and communications management in a multi-robot environment}\\
+		\emph{Internship}\\[2\baselineskip]
+		
+		Paulo Lopes Simões\\[2\baselineskip]
+		
+		\textbf{Supervisor(s)}\\
+		Simon Lacroix\\
+		
+		
+		\vfill
+		
+		LAAS-CNRS\\
+		Toulouse, France\\
+	}
+	
+\end{raggedleft}
+
+\begin{raggedright}
+	
+	{\large
+		\vfill
+		\begin{tabbing}
+			
+			\hspace*{4cm} \= \kill
+			Begin date of exercise: \> 01.10.2013\\
+			Filing date: \> 31.12.2013\\
+			
+		\end{tabbing}
+	}
+	
+\end{raggedright}
+\newpage
+
+\setcounter{page}{1}
+\pagenumbering{roman}
+
+%\tableofcontents
+%\newpage
+
+% MAIN MATTER
+%=============================================================================================
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\include{sources/buglist}
+
+\end{document}
