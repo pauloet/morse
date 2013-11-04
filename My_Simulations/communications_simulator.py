@@ -27,20 +27,30 @@ class Communication_Simulator():
     __models = ('distance', 'line_of_sight', 'free_space_loss', 'empiric_1')
     __default_model = 'distance'
 
-    def __init__(self, robot_1, robot_2):
-        """ Initialization / Constructor """
-        # Robot names are assumed to be correct
+    def __init__(self, robot_1, robot_2, **kwargs):
+        """ Initialization / Constructor
+        Robot names are assumed to be correct! It can also be settled the communication model in this call.
+        Usage examples:
+            r0r1 = communications_simulator.Communication_Simulator('r00', 'r11') 
+            r0r1 = communications_simulator.Communication_Simulator('r00', 'r11', model = "free_space_loss") 
+            
+            In case the model argument doesn't exist, the default one is settled."""
+        
         self.__r1 = robot_1
         self.__r2 = robot_2
-        self.__set_model2default()
+        if "model" in kwargs:
+            self.set_model(kwargs["model"])
+        else:
+            self.set_model(self.__default_model)
     
+
     def can_communicate(self):
         """ This public method returns 'True' or 'False' if the 2 robots can communicate or not. """
         return True
 
 
     def set_model(self, model):
-        """ This public method set a new communication model between the 2 robots.
+        """ This public method set a communication model between the 2 robots.
         If the 'model' argument doesn't exist, it sets to the default one. 
         A log(debug) message is given in the last case. """
         
