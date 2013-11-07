@@ -1,15 +1,15 @@
 #! /usr/bin/env python3.2
 import sys
-import communications_simulator as comm_simu
+import rcs
 from time import sleep
 
 
 def main():
 
 
-    r1r2_1 = comm_simu.Communication_Simulator('r1', 'r2', model = "distance")
-    r1r2_2 = comm_simu.Communication_Simulator('r1', 'r2', model = "line_of_sight")
-    r1r2_3 = comm_simu.Communication_Simulator('r1', 'r2', model = "free_space_loss", freq = 750)
+    r1r2_1 = rcs.RCS('r1', 'r2', model = "distance")
+    r1r2_2 = rcs.RCS('r1', 'r2', model = "line_of_sight")
+    r1r2_3 = rcs.RCS('r1', 'r2', model = "free_space_loss", freq = 750)
     
     try:
         while True:

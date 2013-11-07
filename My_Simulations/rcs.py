@@ -22,7 +22,7 @@ logger.addHandler(ch)
 
 
 
-class Communication_Simulator():
+class RCS():
     """This class aims to simulate if 2 robots can communicate each other according to specific models"""
 
     __models = ('distance', 'line_of_sight', 'free_space_loss', 'empiric_1')
@@ -38,14 +38,13 @@ class Communication_Simulator():
         Kwown arguments: 'model', 'distance_threshold', 'freq' and 'pathloss_threshold'
         Available Models: 'distance', 'line_of_sight', 'free_space_loss'
         Usage examples:
-            r0r1 = communications_simulator.Communication_Simulator('r0', 'r1') 
-            r0r1 = communications_simulator.Communication_Simulator('r0', 'r1', model = "free_space_loss")                 
-            r0r1 = communications_simulator.Communication_Simulator('r0', 'r1', model = "free_space_loss", freq = 800)
-            r0r1 = communications_simulator.Communication_Simulator('r0', 'r1', model = "free_space_loss", pathloss_threshold = 120)
+            r0r1 = rcs.RCS('r0', 'r1') 
+            r0r1 = rcs.RCS('r0', 'r1', model = "free_space_loss")                 
+            r0r1 = rcs.RCS('r0', 'r1', model = "free_space_loss", freq = 800)
+            r0r1 = rcs.RCS('r0', 'r1', model = "free_space_loss", pathloss_threshold = 120)
             ...
-            r0r1 = communications_simulator.Communication_Simulator('r0', 'r1', \
-                    model = "free_space_loss", freq = 800, pathloss_threshold = 120)
-            r0r1 = communications_simulator.Communication_Simulator('r0', 'r1', model = "distance", pathloss_threshold = 100)
+            r0r1 = rcs.RCS('r0', 'r1', model = "free_space_loss", freq = 800, pathloss_threshold = 120)
+            r0r1 = rcs.RCS('r0', 'r1', model = "distance", pathloss_threshold = 100)
 
             Of course, the last example doesn't make sense because the model 'distance' is not related with the loss threshold.
             So, this method has to be used consciously.
@@ -79,7 +78,7 @@ class Communication_Simulator():
         elif self.__model == 'free_space_loss':
             return self.__simulate_comm_freespaceloss()
         else:
-            logger.debug("An error occurred in the 'Class -> Communication_Simulator.can_communicate() method.")
+            logger.debug("An error occurred in the 'Class -> RCS.can_communicate() method.")
             return False
 
 
